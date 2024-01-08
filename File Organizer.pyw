@@ -3,7 +3,7 @@ import shutil
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
-def organizar_descargas(ruta_para_organizar, ruta_destino):
+def organizar_carpetas(ruta_para_organizar, ruta_destino):
     tipos_archivos = {}
 
     archivos = os.listdir(ruta_para_organizar)
@@ -27,10 +27,10 @@ def organizar_descargas(ruta_para_organizar, ruta_destino):
 
     messagebox.showinfo("Éxito", "Archivos organizados correctamente.")
 
-def seleccionar_carpeta_descargas():
-    ruta_descargas = filedialog.askdirectory()
-    entry_descargas.delete(0, tk.END)
-    entry_descargas.insert(0, ruta_descargas)
+def seleccionar_carpeta():
+    ruta_para_organizar = filedialog.askdirectory()
+    entry_archivos.delete(0, tk.END)
+    entry_archivos.insert(0, ruta_para_organizar)
 
 def seleccionar_carpeta_destino():
     ruta_destino = filedialog.askdirectory()
@@ -38,18 +38,18 @@ def seleccionar_carpeta_destino():
     entry_destino.insert(0, ruta_destino)
 
 def organizar_archivos():
-    ruta_descargas = entry_descargas.get()
+    ruta_para_organizar = entry_archivos.get()
     ruta_destino = entry_destino.get()
 
-    organizar_descargas(ruta_descargas, ruta_destino)
+    organizar_carpetas(ruta_para_organizar, ruta_destino)
 
 ventana = tk.Tk()
 ventana.title("Organizador de Archivos")
 
-tk.Label(ventana, text="Carpeta de Descargas:").grid(row=0, column=0, padx=10, pady=5)
-entry_descargas = tk.Entry(ventana, width=40)
-entry_descargas.grid(row=0, column=1, padx=10, pady=5)
-tk.Button(ventana, text="Seleccionar Carpeta", command=seleccionar_carpeta_descargas).grid(row=0, column=2, padx=10, pady=5)
+tk.Label(ventana, text="Carpeta que quieres organizar:").grid(row=0, column=0, padx=10, pady=5)
+entry_archivos = tk.Entry(ventana, width=40)
+entry_archivos.grid(row=0, column=1, padx=10, pady=5)
+tk.Button(ventana, text="Seleccionar Carpeta", command=seleccionar_carpeta).grid(row=0, column=2, padx=10, pady=5)
 
 tk.Label(ventana, text="Carpeta de Destino:").grid(row=1, column=0, padx=10, pady=5)
 entry_destino = tk.Entry(ventana, width=40)
