@@ -25,7 +25,6 @@ def organizar_descargas(ruta_para_organizar, ruta_destino):
 
         shutil.move(ruta_completa, os.path.join(tipos_archivos[extension], archivo))
 
-    # Mostrar mensaje de organización completada en una ventana emergente
     messagebox.showinfo("Éxito", "Archivos organizados correctamente.")
 
 def seleccionar_carpeta_descargas():
@@ -44,11 +43,9 @@ def organizar_archivos():
 
     organizar_descargas(ruta_descargas, ruta_destino)
 
-# Crear la ventana principal
 ventana = tk.Tk()
 ventana.title("Organizador de Archivos")
 
-# Crear y configurar etiquetas y entradas
 tk.Label(ventana, text="Carpeta de Descargas:").grid(row=0, column=0, padx=10, pady=5)
 entry_descargas = tk.Entry(ventana, width=40)
 entry_descargas.grid(row=0, column=1, padx=10, pady=5)
@@ -59,8 +56,6 @@ entry_destino = tk.Entry(ventana, width=40)
 entry_destino.grid(row=1, column=1, padx=10, pady=5)
 tk.Button(ventana, text="Seleccionar Carpeta", command=seleccionar_carpeta_destino).grid(row=1, column=2, padx=10, pady=5)
 
-# Botón para organizar archivos
 tk.Button(ventana, text="Organizar Archivos", command=organizar_archivos).grid(row=2, column=1, pady=10)
 
-# Iniciar el bucle principal de la aplicación
 ventana.mainloop()
